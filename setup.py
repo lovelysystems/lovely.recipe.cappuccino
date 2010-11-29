@@ -6,7 +6,7 @@ def read(*rnames):
     return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
 
 setup (
-    name='recipe.cappuccino',
+    name='lovely.recipe.cappuccino',
     description = "local cappuccino setup for zc.buildout",
     long_description=(
         read('README.txt')
@@ -14,7 +14,7 @@ setup (
         'Detailed Documentation\n'
         '**********************'
         + '\n\n' +
-        read('src', 'recipe', 'cappuccino', 'README.txt')
+        read('src', 'lovely', 'recipe', 'cappuccino', 'README.txt')
         + '\n\n' +
         read('CHANGES.txt')
         ),
@@ -23,11 +23,11 @@ setup (
     author_email = "office@lovelysystems.com",
     license = "ZPL 2.1",
     keywords = "buildout recipe cappuccino javascript objectiv-j cocoa",
-    url = 'http://github.org/lovely.recipe',
+    url = 'http://github.org/lovelysystems/lovely.recipe.cappuccino',
     packages = find_packages('src'),
     include_package_data = True,
     package_dir = {'':'src'},
-    namespace_packages = ['recipe',],
+    namespace_packages = ['lovely', 'lovely.recipe',],
     extras_require = dict(
                     test=[
                         'zope.testing',
@@ -36,7 +36,7 @@ setup (
                         'zc.buildout',
                         ],
     entry_points = {'zc.buildout':
-                    ['default = recipe.cappuccino.build:Install']},
+                    ['default = lovely.recipe.cappuccino.build:Install']},
     zip_safe = True,
     )
 

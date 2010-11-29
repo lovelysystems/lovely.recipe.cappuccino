@@ -11,7 +11,7 @@ Let's create a sample buildout to install it:
     ... parts = cappuccino
     ...
     ... [cappuccino]
-    ... recipe = recipe.cappuccino
+    ... recipe = lovely.recipe.cappuccino
     ... """)
 
 When running buildout, cappuccino is installed
