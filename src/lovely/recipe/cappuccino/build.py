@@ -63,12 +63,13 @@ class Install(object):
             stdout, stderr = cmd.communicate()
             cmd = subprocess.Popen((tusk, 'list'),)
             stdout, stderr = cmd.communicate()
-            # build jsc for webkit
-            wd = os.getcwd()
-            os.chdir(os.path.join(self.narwhalPath, 'packages', 'narwhal-jsc'))
-            cmd = subprocess.Popen(('make', 'webkit',))
-            stdout, stderr = cmd.communicate()
-            os.chdir(wd)
+            if os.uname()[0] == 'Darwin':
+                # build jsc for webkit
+                wd = os.getcwd()
+                os.chdir(os.path.join(self.narwhalPath, 'packages', 'narwhal-jsc'))
+                cmd = subprocess.Popen(('make', 'webkit',))
+                stdout, stderr = cmd.communicate()
+                os.chdir(wd)
 
 
         # at this point we have a narwhal installation
