@@ -56,6 +56,7 @@ class Install(object):
 
             tusk = os.path.join(self.narwhalPath, 'bin', 'tusk')
             if self.cappuccinoDevelop is None:
+                # install standard package
                 self.narwhalRequired += ('cappuccino',)
             cmd = subprocess.Popen(  (tusk, 'install',)
                                    + REQUIRED_PACKAGES
@@ -65,6 +66,7 @@ class Install(object):
             stdout, stderr = cmd.communicate()
             if os.uname()[0] == 'Darwin':
                 # build jsc for webkit
+                os.environ['NARWHAL_ENGINE'] = 'jsc'
                 wd = os.getcwd()
                 os.chdir(os.path.join(self.narwhalPath, 'packages', 'narwhal-jsc'))
                 cmd = subprocess.Popen(('make', 'webkit',))
@@ -75,6 +77,7 @@ class Install(object):
         # at this point we have a narwhal installation
         if self.cappuccinoDevelop is not None:
             # install cappuccino from a git clone
+            os.environ['NARWHAL_ENGINE'] = 'jsc'
             os.environ['CAPP_BUILD'] = os.path.join(
                                         self.cappuccinoDevelop, 'Build')
             jake = os.path.join(self.narwhalPath, 'bin', 'jake')
