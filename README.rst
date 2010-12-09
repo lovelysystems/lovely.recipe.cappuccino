@@ -27,9 +27,12 @@ download narwahl from github using the options::
 The downloaded file is cached using the standard buildout cache.
 
 if the path <path>/narwhal doesn't exist::
+
   - extract narwhal to <path>/narwhal
   - run "tusk install browserjs jake shrinksafe narwhal-jsc <narwahl-reqired>"
   - run "make webkit" in <path>/narwhal/packages/narwhal-jsc
+
+If we are installing on a MAC (uname == 'Darwin') narwhal-jsc is compiled.
 
 At this point of the installation we have narwhal installed at <path>/narwahl
 with the latest released cappuccino version.
