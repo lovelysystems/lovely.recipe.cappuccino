@@ -9,7 +9,7 @@ setup (
     name='lovely.recipe.cappuccino',
     description = "local cappuccino setup for zc.buildout",
     long_description=(
-        read('README.txt')
+        read('README.rst')
         + '\n\n' +
         'Detailed Documentation\n'
         '**********************'

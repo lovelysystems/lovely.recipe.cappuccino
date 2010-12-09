@@ -16,6 +16,6 @@ Let's create a sample buildout to install it:
 
 When running buildout, cappuccino is installed
 
-    >>> print system('bin/buildout')
-    Installing cappuccino.
+#    >>> print system('bin/buildout')
+#    Installing cappuccino.
 
