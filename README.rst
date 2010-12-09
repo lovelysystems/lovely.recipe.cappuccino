@@ -9,18 +9,19 @@ your development environment.
 Buildout options
 ================
 
-path - where to install narwhal (default: parts)
-narwhal-user - github user from which to get narwhal (default: 280north)
-narwhal-ref - reference of the version/branch to use (default: master)
-narwhal-required - additional packages to install into narwhal
+ - path : where to install narwhal (default: parts)
+ - narwhal-user : github user from which to get narwhal (default: 280north)
+ - narwhal-ref : reference of the version/branch to use (default: master)
+ - narwhal-required : additional packages to install into narwhal
 
-cappuccino-develop - path to a cappuccino checkout (default: None)
+ - cappuccino-develop : path to a cappuccino checkout (default: None)
 
 
 What happens
 ============
 
-download narwahl from:
+download narwahl from github using the options::
+
   http://github.com/<narwhal-user>/narwhal/zipball/<narwhal-ref>
 
 The downloaded file is cached using the standard buildout cache.
@@ -30,8 +31,8 @@ if the path <path>/narwhal doesn't exist::
   - run "tusk install browserjs jake shrinksafe narwhal-jsc <narwahl-reqired>"
   - run "make webkit" in <path>/narwhal/packages/narwhal-jsc
 
-At this point of the installation we have narwhal insalled at <path>/narwahl
-with lates released cappuccino version.
+At this point of the installation we have narwhal installed at <path>/narwahl
+with the latest released cappuccino version.
 
 
 Using a Development Version of cappuccino

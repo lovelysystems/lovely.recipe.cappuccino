@@ -11,10 +11,8 @@ setup (
     long_description=(
         read('README.rst')
         + '\n\n' +
-        'Detailed Documentation\n'
-        '**********************'
-        + '\n\n' +
-        read('src', 'lovely', 'recipe', 'cappuccino', 'README.txt')
+        'Changes\n'
+        '*******'
         + '\n\n' +
         read('CHANGES.txt')
         ),
@@ -23,7 +21,7 @@ setup (
     author_email = "office@lovelysystems.com",
     license = "ZPL 2.1",
     keywords = "buildout recipe cappuccino javascript objectiv-j cocoa",
-    url = 'http://github.org/lovelysystems/lovely.recipe.cappuccino',
+    url = 'http://github.com/lovelysystems/lovely.recipe.cappuccino',
     packages = find_packages('src'),
     include_package_data = True,
     package_dir = {'':'src'},
