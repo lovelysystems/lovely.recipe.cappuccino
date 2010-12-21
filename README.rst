@@ -2,12 +2,19 @@
 lovely.recipe.cappuccino
 ========================
 
-This recipe allows you to install cappuccino as a local installation inside
-your development environment.
+This recipe allows you to
 
+ - install cappuccino as a local installation inside your development environment
+ - setup a build tool to support cibs and data models
+
+
+Cappuccino Installer
+====================
+
+Creates a local cappuccino installation for your project.
 
 Buildout options
-================
+----------------
 
  - path : where to install narwhal (default: parts)
  - narwhal-user : github user from which to get narwhal (default: 280north)
@@ -18,7 +25,7 @@ Buildout options
 
 
 What happens
-============
+------------
 
 download narwahl from github using the options::
 
@@ -39,7 +46,7 @@ with the latest released cappuccino version.
 
 
 Using a Development Version of cappuccino
-=========================================
+-----------------------------------------
 
 If you provide a path to a cappuccino checkout then "jake install" is run to
 install the dev-version into narwhal.
@@ -51,7 +58,6 @@ Here's a sample buildout setup to install a cappuccino checkout at
 ${buildout-directory}/js/cappuccino
 
 ::
-
     [buildout]
 
     extensions = mr.developer
@@ -63,4 +69,43 @@ ${buildout-directory}/js/cappuccino
 
     [sources]
     cappuccino = git egg=false git://github.com/280north/cappuccino.git
+
+
+Cappuccino Build Tools
+======================
+
+Creates an executable to build whatever is needed for your cappuccino
+project(s).
+
+
+Option: narwhal (required)
+--------------------------
+
+The path to the narwhal installation to use. You can easily get the path from
+the cappcuccino install parts using ${partname:narwhal-directory}.
+
+
+Option: name (optional)
+-----------------------
+
+The name for the executable (default: the name of the buildout part)
+
+
+Option: nib2cib (optional)
+--------------------------
+
+List of paths to your projects to look for \*.xib files.
+
+Run "nib2cib" for all xib files found.
+
+
+Option: datamodel (optional)
+----------------------------
+
+List of paths to your projects to look for "\*.xcdatamodel" files.
+
+Run
+    - /Developer/usr/bin/momc <name.xcdatamodel> name.cxcdatamodel
+    - plutil -convert xml1 name.cxcdatamodel
+for every xcdatamodel found in and below the path.
 

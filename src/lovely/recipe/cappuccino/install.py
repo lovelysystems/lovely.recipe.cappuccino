@@ -36,6 +36,7 @@ class Install(object):
             self.cappuccinoRef = CAPPUCCINO_REF
         elif self.cappuccinoRef is not None and self.cappuccinoUser is None:
             self.cappuccinoUser = CAPPUCCINO_USER
+        self.buildout[name]['narwhal-directory'] = self.narwhalPath
 
     def install(self):
         os.environ['PATH'] =   os.path.join(self.narwhalPath, 'bin') \

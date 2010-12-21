@@ -5,6 +5,12 @@ import os
 def read(*rnames):
     return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
 
+entry_points = """
+[zc.buildout]
+install=lovely.recipe.cappuccino.install:Install
+builder=lovely.recipe.cappuccino.builder:Builder
+"""
+
 setup (
     name='lovely.recipe.cappuccino',
     description = "local cappuccino setup for zc.buildout",
@@ -33,8 +39,7 @@ setup (
     install_requires = ['setuptools',
                         'zc.buildout',
                         ],
-    entry_points = {'zc.buildout':
-                    ['default = lovely.recipe.cappuccino.build:Install']},
+    entry_points = entry_points,
     zip_safe = True,
     )
 

@@ -2,6 +2,13 @@
 CHANGES
 =======
 
+0.0.1a1
+-------
+
+ - added a recipe to build a build tool: "builder"
+
+ - changed the default recipe to "install"
+
 0.0.1a0 (unreleased)
 --------------------
 
