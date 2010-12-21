@@ -1,5 +1,6 @@
 .installed.cfg
 bin/
+dist/
 develop-eggs/
 parts/
 src/*egg-info
