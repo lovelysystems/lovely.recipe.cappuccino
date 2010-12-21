@@ -22,7 +22,7 @@ setup (
         + '\n\n' +
         read('CHANGES.txt')
         ),
-    version='0.0.0a1',
+    version='0.0.1',
     author = "Lovely Systems",
     author_email = "office@lovelysystems.com",
     license = "ZPL 2.1",
@@ -40,6 +40,6 @@ setup (
                         'zc.buildout',
                         ],
     entry_points = entry_points,
-    zip_safe = True,
+    zip_safe = False,
     )
 
