@@ -29,13 +29,7 @@ class Install(object):
         self.narwhalRef = options.get('narwhal-ref', NARWHAL_REF)
         self.narwhalRequired = options.get('narwhal-required', ())
         self.cappuccinoDevelop = options.get('cappuccino-develop', None)
-        self.cappuccinoPath = os.path.join(self.path, 'cappuccino')
-        self.cappuccinoUser = options.get('cappuccino-user', None)
-        self.cappuccinoRef = options.get('cappuccino-ref', None)
-        if self.cappuccinoRef is None and self.cappuccinoUser is not None:
-            self.cappuccinoRef = CAPPUCCINO_REF
-        elif self.cappuccinoRef is not None and self.cappuccinoUser is None:
-            self.cappuccinoUser = CAPPUCCINO_USER
+        # for others to reference our narwhal installation directory:
         self.buildout[name]['narwhal-directory'] = self.narwhalPath
 
     def install(self):
