@@ -27,7 +27,10 @@ class Install(object):
         self.narwhalPath = os.path.join(self.path, 'narwhal')
         self.narwhalUser = options.get('narwhal-user', NARWHAL_USER)
         self.narwhalRef = options.get('narwhal-ref', NARWHAL_REF)
-        self.narwhalRequired = options.get('narwhal-required', ())
+        nr = options.get('narwhal-required', ())
+        if nr:
+            nr = tuple(nr.strip().split())
+        self.narwhalRequired = nr
         self.cappuccinoDevelop = options.get('cappuccino-develop', None)
         # for others to reference our narwhal installation directory:
         self.buildout[name]['narwhal-directory'] = self.narwhalPath
@@ -67,7 +70,6 @@ class Install(object):
                 cmd = subprocess.Popen(('make', 'webkit',))
                 stdout, stderr = cmd.communicate()
                 os.chdir(wd)
-
 
         # at this point we have a narwhal installation
         if self.cappuccinoDevelop is not None:
