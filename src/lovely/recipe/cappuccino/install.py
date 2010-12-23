@@ -49,7 +49,8 @@ class Install(object):
         if not os.path.exists(self.narwhalPath):
             cmd = subprocess.Popen(('unzip', narwhalZip, '-d', '/tmp'))
             stdout, stderr = cmd.communicate()
-            files = [f for f in os.listdir('/tmp') if f.startswith('280north')]
+            files = [f for f in os.listdir('/tmp')
+                            if f.startswith(self.narwhalUser)]
             shutil.move(os.path.join('/tmp', files[0]), self.narwhalPath)
 
             tusk = os.path.join(self.narwhalPath, 'bin', 'tusk')
