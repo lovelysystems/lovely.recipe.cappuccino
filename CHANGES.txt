@@ -2,6 +2,16 @@
 CHANGES
 =======
 
+2011/01/13 0.0.5
+----------------
+
+ - required packages from the buildout configuration are installed with a
+   separate call to tust install
+
+ - required packages from the buildout configuration are installed last
+
+ - changed the order of how packages are installed
+
 2010/12/23 0.0.4
 ----------------
 

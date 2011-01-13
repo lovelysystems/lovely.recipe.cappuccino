@@ -54,14 +54,7 @@ class Install(object):
             shutil.move(os.path.join('/tmp', files[0]), self.narwhalPath)
 
             tusk = os.path.join(self.narwhalPath, 'bin', 'tusk')
-            if self.cappuccinoDevelop is None:
-                # install standard package
-                self.narwhalRequired += ('cappuccino',)
-            cmd = subprocess.Popen(  (tusk, 'install',)
-                                   + REQUIRED_PACKAGES
-                                   + self.narwhalRequired,)
-            stdout, stderr = cmd.communicate()
-            cmd = subprocess.Popen((tusk, 'list'),)
+            cmd = subprocess.Popen((tusk, 'install') + REQUIRED_PACKAGES)
             stdout, stderr = cmd.communicate()
             if os.uname()[0] == 'Darwin':
                 # build jsc for webkit
@@ -72,19 +65,27 @@ class Install(object):
                 stdout, stderr = cmd.communicate()
                 os.chdir(wd)
 
-        # at this point we have a narwhal installation
-        if self.cappuccinoDevelop is not None:
-            # install cappuccino from a git clone
-            os.environ['NARWHAL_ENGINE'] = 'jsc'
-            os.environ['CAPP_BUILD'] = os.path.join(
-                                        self.cappuccinoDevelop, 'Build')
-            jake = os.path.join(self.narwhalPath, 'bin', 'jake')
-            wd = os.getcwd()
-            os.chdir(self.cappuccinoDevelop)
-            cmd = subprocess.Popen((jake, 'install',))
-            stdout, stderr = cmd.communicate()
-            os.chdir(wd)
-
+            # at this point we have a narwhal installation
+            if self.cappuccinoDevelop is not None:
+                # install cappuccino from a git clone
+                os.environ['CAPP_BUILD'] = os.path.join(
+                                            self.cappuccinoDevelop, 'Build')
+                jake = os.path.join(self.narwhalPath, 'bin', 'jake')
+                wd = os.getcwd()
+                os.chdir(self.cappuccinoDevelop)
+                cmd = subprocess.Popen((jake, 'install',))
+                stdout, stderr = cmd.communicate()
+                os.chdir(wd)
+            else:
+                # install standard package
+                cmd = subprocess.Popen((tusk, 'install', 'cappuccino'))
+                stdout, stderr = cmd.communicate()
+            # Install the required packages from the buildout configuration.
+            # We use a separate call to tusk for each package because of
+            # problems otherwise.
+            for package in self.narwhalRequired:
+                cmd = subprocess.Popen((tusk, 'install', package))
+                stdout, stderr = cmd.communicate()
         return (self.narwhalPath,)
 
     def update(self):
