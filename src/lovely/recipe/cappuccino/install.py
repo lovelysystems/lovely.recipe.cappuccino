@@ -10,7 +10,7 @@ import zc.buildout
 
 logger = logging.getLogger(__name__)
 
-REQUIRED_PACKAGES = ('browserjs', 'jake', 'shrinksafe', 'narwhal-jsc')
+REQUIRED_PACKAGES = ('browserjs', 'jake', 'shrinksafe')
 
 NARWHAL_USER = '280north'
 NARWHAL_REF = 'master'
@@ -27,6 +27,7 @@ class Install(object):
         self.narwhalPath = os.path.join(self.path, 'narwhal')
         self.narwhalUser = options.get('narwhal-user', NARWHAL_USER)
         self.narwhalRef = options.get('narwhal-ref', NARWHAL_REF)
+        self.narwhal_jsc = bool(options.get('narwhal-jsc', False))
         nr = options.get('narwhal-required', ())
         if nr:
             nr = tuple(nr.strip().split())
@@ -56,7 +57,9 @@ class Install(object):
             tusk = os.path.join(self.narwhalPath, 'bin', 'tusk')
             cmd = subprocess.Popen((tusk, 'install') + REQUIRED_PACKAGES)
             stdout, stderr = cmd.communicate()
-            if os.uname()[0] == 'Darwin':
+            if self.narwhal_jsc and os.uname()[0] == 'Darwin':
+                cmd = subprocess.Popen((tusk, 'install', 'narwhal-jsc'))
+                stdout, stderr = cmd.communicate()
                 # build jsc for webkit
                 os.environ['NARWHAL_ENGINE'] = 'jsc'
                 wd = os.getcwd()

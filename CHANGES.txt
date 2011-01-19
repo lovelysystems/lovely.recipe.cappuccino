@@ -2,6 +2,12 @@
 CHANGES
 =======
 
+2011/01/14 0.0.6
+----------------
+
+ - added "narwhal-jsc" option to explicitely activate narwhal-jsc on MAC
+    This was needed because of compile problems on some systems.
+
 2011/01/13 0.0.5
 ----------------
 

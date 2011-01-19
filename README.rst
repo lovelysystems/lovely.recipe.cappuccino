@@ -20,6 +20,7 @@ Buildout options
  - narwhal-user : github user from which to get narwhal (default: 280north)
  - narwhal-ref : reference of the version/branch to use (default: master)
  - narwhal-required : additional packages to install into narwhal
+ - narwhal-jsc : use narwhal-jsc on OS-X systems
 
  - cappuccino-develop : path to a cappuccino checkout (default: None)
 
@@ -36,8 +37,10 @@ The downloaded file is cached using the standard buildout cache.
 if the path <path>/narwhal doesn't exist::
 
   - extract narwhal to <path>/narwhal
-  - run "tusk install browserjs jake shrinksafe narwhal-jsc"
-  - run "make webkit" in <path>/narwhal/packages/narwhal-jsc
+  - run "tusk install browserjs jake shrinksafe"
+  - on MAC OS-X:
+      - run "tusk install narwhal-jsc"
+      - run "make webkit" in <path>/narwhal/packages/narwhal-jsc
   - run "tusk install cappuccino"
   - run "tusk install <required>" for every <narwahl-reqired> package
 
