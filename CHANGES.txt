@@ -2,6 +2,12 @@
 CHANGES
 =======
 
+2011/01/23 0.0.7
+----------------
+
+ - narwhal-jsc can also be activated from environment variable
+   "buildoutnarwhaljsc"
+
 2011/01/14 0.0.6
 ----------------
 

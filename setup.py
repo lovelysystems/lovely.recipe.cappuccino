@@ -19,7 +19,7 @@ setup (
         + '\n\n' +
         read('CHANGES.txt')
         ),
-    version='0.0.6',
+    version='0.0.7',
     author = "Lovely Systems",
     author_email = "office@lovelysystems.com",
     license = "ZPL 2.1",

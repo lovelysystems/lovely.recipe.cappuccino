@@ -44,7 +44,11 @@ if the path <path>/narwhal doesn't exist::
   - run "tusk install cappuccino"
   - run "tusk install <required>" for every <narwahl-reqired> package
 
-If we are installing on a MAC (uname == 'Darwin') narwhal-jsc is compiled.
+By default narwhal-jsc is not installed. It can be controlled by the
+"narwhal-jsc" buildout option or by setting the environment variable
+"buildoutnarwhaljsc".
+Independent of this narwhal-jsc is only installen on MAC-OS-X (uname ==
+'Darwin').
 
 At this point of the installation we have narwhal installed at <path>/narwahl
 with the latest released cappuccino version.
